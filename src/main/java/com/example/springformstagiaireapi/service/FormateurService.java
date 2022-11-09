@@ -73,6 +73,12 @@ public class FormateurService {
         return formateurRepository.save(formateur);
     }
 
+    /**
+     * update formateur en function de l'object formateur envoyé dans la requete HTTP
+     * Utilisation de POST pour remplacement
+     * @param formateur
+     * @return updated stagiaire
+     */
     public Formateur update(Formateur formateur) {
         if (!formateurRepository.existsById(formateur.getId())) {
             throw new ResponseStatusException(HttpStatus.NOT_ACCEPTABLE, "Formateur non existant");

@@ -25,6 +25,7 @@ public class MatiereController {
 
     /**
      * récupère tout les matiere dans la DB
+     *
      * @return Liste de matiere
      */
     @RequestMapping("")
@@ -34,7 +35,6 @@ public class MatiereController {
     }
 
     /**
-     *
      * @param id Id de la requete HTTP pour trouver un matiere particulier
      * @return le stagiaire ayant l'id recherché
      */
@@ -48,21 +48,33 @@ public class MatiereController {
     // POST - CREATE
 
     /**
-     *  crée un matiere
+     * Creation d'une matière unique
      * @param matiere envoyé dans le body de la request HTTP
      * @return le matiere crée
      */
-    @PostMapping("/listFormateur/{id_formateurs}")
+    @PostMapping("")
+    @ResponseStatus(code = HttpStatus.CREATED)
+    public Matiere create(@RequestBody Matiere matiere) {
+        return matiereService.create(matiere);
+    }
+
+    /**
+     * crée une matiere, en ajoutant une liste d'ID qui vont correspondre aux ID de formateur
+     * @param matiere envoyé dans le body de la request HTTP
+     * @return le matiere crée
+     */
+    @PostMapping("/addFormateurList/{id_formateurs}")
     @ResponseStatus(code = HttpStatus.CREATED)
     public Matiere create(@RequestBody Matiere matiere, @PathVariable String id_formateurs) {
         List<String> listIdFormateur = new ArrayList<>(Arrays.asList(id_formateurs.split(",")));
-         return matiereService.create(matiere, listIdFormateur);
+        return matiereService.createWithList(matiere, listIdFormateur);
     }
 
     /**
      * Update un matiere
+     *
      * @param matiere matiere issue du body de la requete HTTP
-     * @param id ID du matiere a mettre à jour
+     * @param id      ID du matiere a mettre à jour
      * @return retourne le matiere updaté
      */
     @PostMapping("{id}")
@@ -79,6 +91,7 @@ public class MatiereController {
 
     /**
      * supprime un matiere de la DB
+     *
      * @param id l'id du matiere a updaté
      * @return retourne le matiere supprimé
      */

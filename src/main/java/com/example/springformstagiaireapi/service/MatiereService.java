@@ -55,13 +55,23 @@ public class MatiereService {
     // POST
 
     /**
+     * creation d'une matière
+     * @param matiere issue du body de la request POST
+     * @return matiere crée
+     */
+    public Matiere create(Matiere matiere) {
+        return matiereRepository.save(matiere);
+    }
+
+
+    /**
      * Crée une matiere issue du body de la request HTTP.
      * Récupère une liste d'id qui vont être utilisé comme ID de formateur pour générer une liste de formateur
      * qui vont enseigner la matiere.
      * @param matiere issue du body de la request POST
      * @return matiere crée
      */
-    public Matiere create(Matiere matiere, List<String> formateurID) {
+    public Matiere createWithList(Matiere matiere, List<String> formateurID) {
         List<Long> IDtoLong = formateurID.stream()
                 .map(Long::valueOf)
                 .collect(Collectors.toList());
@@ -77,6 +87,12 @@ public class MatiereService {
         return matiereRepository.save(matiere);
     }
 
+    /**
+     * update matiere en function de l'object matiere envoyé dans la requete HTTP
+     * Utilisation de POST pour remplacement
+     * @param matiere
+     * @return updated matiere
+     */
     public Matiere update(Matiere matiere) {
         if (!matiereRepository.existsById(matiere.getId())) {
             throw new ResponseStatusException(HttpStatus.NOT_ACCEPTABLE, "Matiere non existant");

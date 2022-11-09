@@ -56,6 +56,12 @@ public class AdressService {
         return adressRepository.save(adress);
     }
 
+    /**
+     * update adress en function de l'object adress envoyé dans la requete HTTP
+     * Utilisation de POST pour remplacement
+     * @param adress
+     * @return updated adress
+     */
     public Adress update(Adress adress) {
         if (!adressRepository.existsById(adress.getId())) {
             throw new ResponseStatusException(HttpStatus.NOT_ACCEPTABLE, "Adress non existant");

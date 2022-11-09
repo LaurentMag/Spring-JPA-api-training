@@ -52,7 +52,7 @@ public class StagiaireService {
 
     /**
      * Crée un stagiaire issue du body de la requete HTTP.
-     * Ajout d'une stagiaire si ajout d'une adress avec le formateur pour la créer si non existante
+     * Ajout d'une stagiaire si ajout d'une adress avec le stagiaire pour la créer si non existante
      * @param stagiaire issue du body de la request POST
      * @return stagiaire crée
      */
@@ -71,6 +71,12 @@ public class StagiaireService {
         return stagiaireRepository.save(stagiaire);
     }
 
+    /**
+     * update stagiare en function de l'object stagiaire envoyé dans la requete HTTP
+     * Utilisation de POST pour remplacement
+     * @param stagiaire
+     * @return updated stagiaire
+     */
     public Stagiaire update(Stagiaire stagiaire) {
         if (!stagiaireRepository.existsById(stagiaire.getId())) {
             throw new ResponseStatusException(HttpStatus.NOT_ACCEPTABLE, "Stagiaire non existant");
