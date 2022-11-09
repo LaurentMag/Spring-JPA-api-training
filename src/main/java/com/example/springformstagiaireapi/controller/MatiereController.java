@@ -59,7 +59,9 @@ public class MatiereController {
     }
 
     /**
-     * crée une matiere, en ajoutant une liste d'ID qui vont correspondre aux ID de formateur
+     * crée une matiere, en ajoutant une liste d'ID qui vont correspondre aux ID de formateur à ajouter dans la liste
+     * {id_formateurs} sera une succession d'ID dans l'url
+     * ex : /addFormateurList/5,6,7,8,34
      * @param matiere envoyé dans le body de la request HTTP
      * @return le matiere crée
      */
