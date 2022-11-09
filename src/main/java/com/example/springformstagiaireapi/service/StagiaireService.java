@@ -51,7 +51,8 @@ public class StagiaireService {
     // POST
 
     /**
-     * Crée un stagiaire utilisant
+     * Crée un stagiaire issue du body de la requete HTTP.
+     * Ajout d'une stagiaire si ajout d'une adress avec le formateur pour la créer si non existante
      * @param stagiaire issue du body de la request POST
      * @return stagiaire crée
      */

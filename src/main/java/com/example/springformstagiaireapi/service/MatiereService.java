@@ -55,7 +55,9 @@ public class MatiereService {
     // POST
 
     /**
-     * Crée un adress utilisant
+     * Crée une matiere issue du body de la request HTTP.
+     * Récupère une liste d'id qui vont être utilisé comme ID de formateur pour générer une liste de formateur
+     * qui vont enseigner la matiere.
      * @param matiere issue du body de la request POST
      * @return matiere crée
      */

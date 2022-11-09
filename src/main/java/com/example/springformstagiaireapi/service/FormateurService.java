@@ -53,7 +53,8 @@ public class FormateurService {
     // POST
 
     /**
-     * Crée un formateur utilisant
+     * Crée un formateur issue du body de la requete HTTP.
+     * Ajout d'une vérification si ajout d'une adress avec le formateur pour la créer si non existante
      * @param formateur issue du body de la request POST
      * @return formateur crée
      */
