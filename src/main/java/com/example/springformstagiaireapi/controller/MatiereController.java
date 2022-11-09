@@ -65,7 +65,7 @@ public class MatiereController {
      */
     @PostMapping("/addFormateurList/{id_formateurs}")
     @ResponseStatus(code = HttpStatus.CREATED)
-    public Matiere create(@RequestBody Matiere matiere, @PathVariable String id_formateurs) {
+    public Matiere createWithList(@RequestBody Matiere matiere, @PathVariable String id_formateurs) {
         List<String> listIdFormateur = new ArrayList<>(Arrays.asList(id_formateurs.split(",")));
         return matiereService.createWithList(matiere, listIdFormateur);
     }
